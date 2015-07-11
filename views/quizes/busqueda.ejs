@@ -1,0 +1,9 @@
+<table>
+  <% if (resultado.length === 0 ){ %>
+    <h1>No hay registros de esta busqueda</h1>
+  <%}else{ for (var i = 0; i < resultado.length; i++){%>
+    <td><tr><a href="/quizes/<%= resultado[i].id %>"><%= resultado[i].pregunta %></a></tr></td><br><br>
+  <%}}%>
+</table>
+<br>
+<a href="/quizes">Volver</a>

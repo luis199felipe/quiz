@@ -43,8 +43,7 @@ sequelize.sync().then(function () {
           respuesta:'Roma'
         }).then(function () {
           console.log('Base de datos inicializada');
-        })
+        });
       }
-    }
-  )
-})
+    });
+  });

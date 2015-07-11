@@ -11,12 +11,18 @@ exports.load = function(req, res, next, quizId) {
 };
 
 
-// GET /users/:userId/quizes
 exports.index = function(req, res) {
-  models.Quiz.findAll().then(
-    function(quizes) {
-      res.render('quizes/index.ejs', {quizes: quizes, });
-    })
+  if (req.query.search) {
+        var busqueda = "%"+req.query.search+"%";
+        models.Quiz.findAll({where: ["pregunta like ?",busqueda]}).then(function (e) {
+            res.render('quizes/busqueda',{resultado:e});
+        });
+  }else {
+      models.Quiz.findAll().then(
+      function(quizes) {
+        res.render('quizes/index.ejs', {quizes: quizes });
+      })
+  }
 };
 
 // GET /quizes/:id
